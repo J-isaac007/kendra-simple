@@ -13,6 +13,8 @@ from pages.pets import PetsPage
 from pages.feeding import FeedingPage
 from pages.medications import MedicationsPage
 from pages.health import HealthPage
+from pages.grooming import GroomingPage
+from pages.calendar_page import CalendarPage
 
 # ── Colors ────────────────────────────────────────────────────────────────────
 BG       = "#1e1e2e"   # dark background
@@ -104,6 +106,8 @@ class KendraApp:
             "feeding":     FeedingPage(self.content, self),
             "medications": MedicationsPage(self.content, self),
             "health":      HealthPage(self.content, self),
+            "grooming":    GroomingPage(self.content, self),
+            "calendar":    CalendarPage(self.content, self),
         }
         # Place all pages in the same spot — we'll raise one on top when needed
         for page in self.pages.values():
