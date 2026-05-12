@@ -12,21 +12,17 @@ import calendar as cal_module
 import csv
 from database import setup_database, get_connection
 
-# ── Colors ────────────────────────────────────────────────────
-BG      = "#1e1e2e"
+# Colors
+BG = "#1e1e2e"
 SURFACE = "#313244"
-ACCENT  = "#89b4fa"
-GREEN   = "#a6e3a1"
-RED     = "#f38ba8"
-TEXT    = "#cdd6f4"
-MUTED   = "#6c7086"
-BORDER  = "#45475a"
+ACCENT = "#89b4fa"
+GREEN = "#a6e3a1"
+RED = "#f38ba8"
+TEXT = "#cdd6f4"
+MUTED = "#6c7086"
+BORDER = "#45475a"
 
-
-# ─────────────────────────────────────────────────────────────
 #  MAIN APP WINDOW
-# ─────────────────────────────────────────────────────────────
-
 class KendraApp:
     def __init__(self, root):
         self.root = root
@@ -102,11 +98,7 @@ class KendraApp:
     def info(self, title, msg):
         messagebox.showinfo(title, msg)
 
-
-# ─────────────────────────────────────────────────────────────
 #  BASE PAGE
-# ─────────────────────────────────────────────────────────────
-
 class BasePage(tk.Frame):
     def __init__(self, parent, app, title, subtitle=""):
         super().__init__(parent, bg=BG)
@@ -181,10 +173,7 @@ class BasePage(tk.Frame):
         return "" if v == placeholder else v
 
 
-# ─────────────────────────────────────────────────────────────
 #  PETS PAGE
-# ─────────────────────────────────────────────────────────────
-
 class PetsPage(BasePage):
     def __init__(self, parent, app):
         super().__init__(parent, app, "🐶  My Pets",
@@ -290,9 +279,7 @@ class PetsPage(BasePage):
         self.btn(brow, "Add Pet", submit).pack(side="left")
 
 
-# ─────────────────────────────────────────────────────────────
 #  FEEDING PAGE
-# ─────────────────────────────────────────────────────────────
 
 class FeedingPage(BasePage):
     def __init__(self, parent, app):
@@ -387,10 +374,7 @@ class FeedingPage(BasePage):
                   cursor="hand2").pack(side="left", padx=(0, 8))
         self.btn(brow, "Add Meal", submit).pack(side="left")
 
-
-# ─────────────────────────────────────────────────────────────
 #  MEDICATIONS PAGE
-# ─────────────────────────────────────────────────────────────
 
 FREQ_OPTIONS = ["Daily", "Twice daily", "Weekly", "Monthly", "As needed"]
 
@@ -493,11 +477,7 @@ class MedicationsPage(BasePage):
                   cursor="hand2").pack(side="left", padx=(0, 8))
         self.btn(brow, "Add Medication", submit).pack(side="left")
 
-
-# ─────────────────────────────────────────────────────────────
 #  HEALTH / WEIGHT PAGE
-# ─────────────────────────────────────────────────────────────
-
 class HealthPage(BasePage):
     def __init__(self, parent, app):
         super().__init__(parent, app, "⚖  Health & Weight",
@@ -622,11 +602,7 @@ class HealthPage(BasePage):
                   cursor="hand2").pack(side="left", padx=(0, 8))
         self.btn(brow, "Log Weight", submit).pack(side="left")
 
-
-# ─────────────────────────────────────────────────────────────
 #  DASHBOARD PAGE
-# ─────────────────────────────────────────────────────────────
-
 class DashboardPage(BasePage):
     def __init__(self, parent, app):
         super().__init__(parent, app, "🏠  Dashboard")
@@ -790,11 +766,7 @@ class DashboardPage(BasePage):
         return {"meals_total": meals_total, "meals_done": meals_done,
                 "meds_total": meds_total, "overdue": overdue, "weight_entries": weight_entries}
 
-
-# ─────────────────────────────────────────────────────────────
 #  GROOMING PAGE
-# ─────────────────────────────────────────────────────────────
-
 class GroomingPage(BasePage):
     def __init__(self, parent, app):
         super().__init__(parent, app, "✂  Grooming",
@@ -907,10 +879,7 @@ class GroomingPage(BasePage):
                   cursor="hand2").pack(side="left", padx=(0, 8))
         self.btn(brow, "Add Task", submit).pack(side="left")
 
-
-# ─────────────────────────────────────────────────────────────
 #  CALENDAR PAGE
-# ─────────────────────────────────────────────────────────────
 
 DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
@@ -1036,10 +1005,6 @@ class CalendarPage(BasePage):
         self.detail_lbl.config(
             text=f"📅 {clicked_date.strftime('%A, %B %d')}:   {'   •   '.join(evs)}",
             fg=TEXT)
-
-
-# ─────────────────────────────────────────────────────────────
-# ─────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     root = tk.Tk()
